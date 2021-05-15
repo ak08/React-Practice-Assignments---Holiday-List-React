@@ -2,6 +2,7 @@
 import React, { Component, useState } from "react";
 import '../styles/App.css';
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -41,10 +42,24 @@ class App extends Component {
     return (
       <div id="main">
         {/* Do not remove the main div */}
+        <Cities cityList={this.cityList}/>
       </div>
     )
   }
 }
 
+const Cities = (props) => {
+  const {cityList} = props;
+  const validCities = cityList.filter(city => city.country === "India").map(city => city.name);
+  const uniqueCities = [...new Set(validCities)];
+  const orderedList = uniqueCities.map((city, index) => <City city={city} key={`location${index + 1}`}/>);
+  console.log(orderedList);
+  return <ol key="orderedList">{orderedList}</ol>
+}
 
 export default App;
+
+const City = (props) => {
+  const {city, index}= props;
+  return <li>{city}</li>
+}
