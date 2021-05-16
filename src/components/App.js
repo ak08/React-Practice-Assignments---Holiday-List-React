@@ -39,28 +39,34 @@ class App extends Component {
   }
 
   render() {
+    const validCities = this.cityList.filter(city => city.country === "India").map(city => city.name);
+    const uniqueCities = [...new Set(validCities)];
+    console.log(uniqueCities);
+    const orderedList = uniqueCities.map((city, index) => <li key={`location${index + 1}`}>{city}</li>);
+    console.log(orderedList);
     return (
       <div id="main">
         {/* Do not remove the main div */}
-        <Cities cityList={this.cityList} />
+        {/* <Cities cityList={this.cityList} /> */}
+        <ol key="orderedList">{orderedList}</ol>
+        {/* <h1>Hi</h1> */}
       </div>
     )
   }
 }
 
-const Cities = (props) => {
-  const {cityList} = props;
-  const validCities = cityList.filter(city => city.country === "India").map(city => city.name);
-  const uniqueCities = [...new Set(validCities)];
-  //let orderedList = uniqueCities.map((city, index) => <City city={city} key={`location${index + 1}`}/>);
-  const orderedList = uniqueCities.map((city, index) => <li key={`location${index + 1}`}>{city}</li>);
-  console.log(orderedList);
-  return <ol key="orderedList">{orderedList}</ol>
-}
+// const Cities = (props) => {
+//   const {cityList} = props;
+//   const validCities = cityList.filter(city => city.country === "India").map(city => city.name);
+//   const uniqueCities = [...new Set(validCities)];
+//   const orderedList = uniqueCities.map((city, index) => <li key={`location${index + 1}`}>{city}</li>);
+//   console.log(orderedList);
+//   return <ol key="orderedList">{orderedList}</ol>
+// }
+
+// const City = (props) => {
+//   const {city, index}= props;
+//   return <li>{city}</li>
+// }
 
 export default App;
-
-const City = (props) => {
-  const {city, index}= props;
-  return <li>{city}</li>
-}
