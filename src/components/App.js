@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div id="main">
         {/* Do not remove the main div */}
-        <Cities cityList={this.cityList}/>
+        <Cities cityList={this.cityList} />
       </div>
     )
   }
@@ -52,7 +52,8 @@ const Cities = (props) => {
   const {cityList} = props;
   const validCities = cityList.filter(city => city.country === "India").map(city => city.name);
   const uniqueCities = [...new Set(validCities)];
-  const orderedList = uniqueCities.map((city, index) => <City city={city} key={`location${index + 1}`}/>);
+  //let orderedList = uniqueCities.map((city, index) => <City city={city} key={`location${index + 1}`}/>);
+  const orderedList = uniqueCities.map((city, index) => <li key={`location${index + 1}`}>{city}</li>);
   console.log(orderedList);
   return <ol key="orderedList">{orderedList}</ol>
 }
