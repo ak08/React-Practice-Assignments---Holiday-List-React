@@ -50,15 +50,13 @@ class App extends Component {
     //const uniqueCities = [...new Set(validCities)];
     //console.log(uniqueCities);
     const orderedList = validCities.map((city) => (
-      <li type="a" key={`location${city.key}`}>
-        {city.name}
-      </li>
+      <li key={`location${city.key}`}>{city.name}</li>
     ));
     console.log(orderedList);
     return (
       <div id="main">
         {/* Do not remove the main div */}
-        <ol>{orderedList}</ol>
+        <ol type="a">{orderedList}</ol>
       </div>
     );
   }
