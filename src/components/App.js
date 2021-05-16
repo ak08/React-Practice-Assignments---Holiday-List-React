@@ -38,25 +38,21 @@ class App extends Component {
   }
 
   render() {
-    const citiesWithKey = this.cityList.map((city, index) => ({
-      ...city,
-      key: index + 1,
-    }));
-    console.log(citiesWithKey);
-    const validCities = citiesWithKey
+    const validCities = this.cityList
       .filter((city) => city.country === "India")
-      .map((city) => ({ name: city.name, key: city.key }));
+      .map((city) => city.name);
     console.log(validCities);
-    //const uniqueCities = [...new Set(validCities)];
-    //console.log(uniqueCities);
-    const orderedList = validCities.map((city) => (
-      <li key={`location${city.key}`}>{city.name}</li>
+    const uniqueCities = [...new Set(validCities)];
+    console.log(uniqueCities);
+    const orderedList = uniqueCities.map((city) => (
+      <li key={`location${city}`}>{city}</li>
     ));
     console.log(orderedList);
     return (
       <div id="main">
         {/* Do not remove the main div */}
         <ol type="a">{orderedList}</ol>
+        {/* <h1>Hello</h1> */}
       </div>
     );
   }
