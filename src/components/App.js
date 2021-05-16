@@ -50,7 +50,9 @@ class App extends Component {
     //const uniqueCities = [...new Set(validCities)];
     //console.log(uniqueCities);
     const orderedList = validCities.map((city) => (
-      <li key={`location${city.key}`}>{city.name}</li>
+      <li type="1" key={`location${city.key}`}>
+        {city.name}
+      </li>
     ));
     console.log(orderedList);
     return (
